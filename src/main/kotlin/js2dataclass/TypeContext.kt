@@ -23,7 +23,7 @@ class TypeContext {
 
     fun genObj(t: JsObj): String {
         // TODO add ancestors on the path if there is a naming conflict
-        val name = currentPath.last().capitalize()
+        val name = className(currentPath.last())
 
         val fieldTypes = t.fields.map { (key, value) ->
             currentPath.add(key)
@@ -40,3 +40,6 @@ class TypeContext {
         return name
     }
 }
+
+fun className(s: String) =
+        s.split("_").joinToString("", transform = String::capitalize)
