@@ -5,8 +5,10 @@ fun parse(x: dynamic): JsType {
         isNull(x) -> JsNull()
 
         isString(x) -> JsStr(nullable = false)
-        isNumber(x) -> JsNum(nullable = false)
+
+        // must check isInteger before isNumber
         isInteger(x) -> JsInt(nullable = false)
+        isNumber(x) -> JsNum(nullable = false)
 
         isObject(x) -> {
             val fields = entries(x).map { (key, value) ->

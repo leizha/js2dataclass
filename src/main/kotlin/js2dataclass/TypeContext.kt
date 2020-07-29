@@ -32,7 +32,8 @@ class TypeContext {
             item
         }.filterNotNull().joinToString(",\n    ")
 
-        definitions.add("""data class $name($fieldTypes
+        definitions.add("""data class $name(
+    $fieldTypes
 )
 """)
         return name
