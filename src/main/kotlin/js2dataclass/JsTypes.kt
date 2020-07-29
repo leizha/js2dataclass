@@ -61,6 +61,16 @@ class JsStr(val nullable: Boolean) : JsType {
     override fun debugType() = "str${debugNullable(nullable)}"
 }
 
+class JsBool(val nullable: Boolean) : JsType {
+    override fun merge(that: JsType) =
+            when (that) {
+                is JsBool -> this
+                else -> JsAny()
+            }
+
+    override fun debugType() = "bool${debugNullable(nullable)}"
+}
+
 class JsObj(val nullable: Boolean, val fields: Map<String, JsType>) : JsType {
     override fun merge(that: JsType) =
             when (that) {

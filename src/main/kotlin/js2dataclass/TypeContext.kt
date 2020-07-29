@@ -8,6 +8,7 @@ class TypeContext {
         return when (t) {
             is JsInt -> "Int${debugNullable(t.nullable)}"
             is JsStr -> "String${debugNullable(t.nullable)}"
+            is JsBool -> "Boolean${debugNullable(t.nullable)}"
             is JsNum -> "Double${debugNullable(t.nullable)}"
             is JsArray -> genArr(t) + debugNullable(t.nullable)
             is JsObj -> genObj(t) + debugNullable(t.nullable)

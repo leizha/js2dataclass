@@ -5,6 +5,7 @@ fun parse(x: dynamic): JsType {
         isNull(x) -> JsNull()
 
         isString(x) -> JsStr(nullable = false)
+        isBoolean(x) -> JsBool(nullable = false)
 
         // must check isInteger before isNumber
         isInteger(x) -> JsInt(nullable = false)
